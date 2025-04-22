@@ -1,23 +1,29 @@
+<div 
+  class="pop-up" 
+  [ngClass]="{ 'success': showSuccess, 'error': showError }" 
+  *ngIf="showSuccess || showError">
+  {{ popUpMessage }}
+</div>
+
+
 <p>mostrar works!</p>
 <div *ngFor="let clase of clases">
     {{ clase.nombre }} - {{ clase.duracion }} minutos - {{ clase.esOnline ? 'Online' : 'Presencial' }}
-    <button (click) = "delete(clase._id)">borrar</button>
-    <button (click) = "clase.mostrar = !clase.mostrar" >modificar</button>
+    <button (click)="delete(clase._id)">borrar</button>
+    <button (click)="clase.mostrar = !clase.mostrar">modificar</button>
     <div *ngIf="clase.mostrar">
-       
         <br>
         <h3>modificar</h3>
         <br>
-        <form (submit)="submit_update(clase._id,clase)">
+        <form (submit)="submit_update(clase._id, clase)">
             <label for="nombre">Nombre:</label>
-            <input type="text" name="name" [(ngModel)]="clase.nombre" value="clase.nombre"><br><br>
-            <label for="duracion">duracion:</label>
+            <input type="text" name="name" [(ngModel)]="clase.nombre"><br><br>
+            <label for="duracion">duración:</label>
             <input type="text" name="durat" [(ngModel)]="clase.duracion"><br><br>
             <label for="esOnline">esOnline:</label>
             <input type="checkbox" name="isOnline" [(ngModel)]="clase.esOnline"><br><br>
             <input type="submit" value="Submit">
         </form>
-      
     </div> 
 </div>  
 <br><br>
@@ -25,8 +31,8 @@
 <br>
 <form (submit)="submit()">
     <label for="nombre">Nombre:</label>
-    <input type="text" name="name" [(ngModel)]="clase.nombre" ><br><br>
-    <label for="durat">duracion:</label>
+    <input type="text" name="name" [(ngModel)]="clase.nombre"><br><br>
+    <label for="durat">duración:</label>
     <input type="text" name="durat" [(ngModel)]="clase.duracion"><br><br>
     <label for="esOnline">esOnline:</label>
     <input type="checkbox" name="esOnline" [(ngModel)]="clase.esOnline"><br><br>
